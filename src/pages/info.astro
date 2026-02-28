@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Navbar } from "@/components/Navbar";
+import { InfoAbout } from "@/components/InfoAbout";
+import { InfoExperience } from "@/components/InfoExperience";
+import { InfoSkills } from "@/components/InfoSkills";
+import { Footer } from "@/components/Footer";
+---
+
+<Layout title="Info — Ravinder Chadha">
+	<Navbar activePage="info" client:load />
+	<main class="pt-20">
+		<InfoAbout client:load />
+		<InfoExperience client:visible />
+		<InfoSkills client:visible />
+	</main>
+	<Footer client:visible />
+</Layout>

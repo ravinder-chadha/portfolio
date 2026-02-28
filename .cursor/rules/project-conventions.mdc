@@ -1,0 +1,63 @@
+---
+description: Base project conventions for Astro portfolio site using pnpm, Tailwind v4, shadcn/ui, and Lucide icons
+alwaysApply: true
+---
+
+# Project Conventions
+
+## Stack
+
+- **Framework:** Astro 5 with React integration (`@astrojs/react`)
+- **Styling:** Tailwind CSS v4 via `@tailwindcss/vite` plugin
+- **Components:** shadcn/ui (new-york style, `components.json` at root)
+- **Icons:** Lucide React (`lucide-react`)
+- **Package manager:** pnpm (always use `pnpm` — never `npm` or `yarn`)
+
+## Package Management
+
+- Install packages: `pnpm add <pkg>`
+- Install dev packages: `pnpm add -D <pkg>`
+- Add shadcn components: `pnpm dlx shadcn@latest add <component>`
+- Run scripts: `pnpm dev`, `pnpm build`, `pnpm preview`
+
+## File Conventions
+
+- Astro pages: `src/pages/`
+- Astro layouts: `src/layouts/`
+- React components: `src/components/` (`.tsx`)
+- shadcn UI components: `src/components/ui/`
+- Utilities: `src/lib/`
+- Styles: `src/styles/global.css` (imported in `src/layouts/Layout.astro`)
+
+## Import Alias
+
+Use `@/` for all `src/` imports:
+
+```ts
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+```
+
+## Icons
+
+Use tree-shakeable imports from `lucide-react`:
+
+```tsx
+import { ArrowRight, Github } from "lucide-react"
+```
+
+Never import the entire library. Always import individual icons by name.
+Browse available icons at https://lucide.dev/icons/
+
+## Astro + React
+
+- Use `.astro` files for static/layout content (rendered at build time).
+- Use `.tsx` files for interactive components that need client-side hydration.
+- Add `client:load`, `client:visible`, or `client:idle` directives when using React components in `.astro` files.
+
+```astro
+---
+import { Button } from "@/components/ui/button"
+---
+<Button client:load>Click me</Button>
+```

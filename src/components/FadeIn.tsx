@@ -51,7 +51,7 @@ export function FadeIn({
     <div
       ref={ref}
       className={cn(
-        "transition-all ease-out",
+        "transition-all ease-out w-full",
         isVisible
           ? "opacity-100 translate-y-0 translate-x-0"
           : `opacity-0 ${directionStyles[direction]}`,
